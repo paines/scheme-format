@@ -1,0 +1,10 @@
+;; -*- scheme -*-
+
+((synopsis "Chicken Scheme code formattor")
+ (category tools)
+ (dependencies srfi-1 srfi-13 srfi-69 simple-loops matchable list-utils format callable-data-structures)
+ (license "MIT")
+ (author "masukomi (a.k.a. Kay Rhodes),paines (a.k.a Anes Lihovac)")
+ (version "1")
+ (components
+  (program scheme-format)))
