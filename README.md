@@ -13,9 +13,33 @@ If you'd like to edit a file in place you can use the `-i` option
 $ scheme-format -i path/to/my/scheme/file.scm
 ```
 
+You can also format a file via STDIN to use from within an IDE like VScode.
+For VSCode you would need the extension  [external-formatters](https://github.com/SteefH/vscode-external-formatters) and add following to your
+settings.json:
+```sh
+{
+    "externalFormatters.globPatterns": {},
+    "externalFormatters.languages": {
+        "scheme": {
+            "command": "scheme-format"
+        }
+    },
+    "window.zoomLevel": 2
+}
+```
+
 It is recommended that you integrate this with your favorite editor such that it can replace the current version of your code with the formatted one produced by this.
 
 See [the GitHub Issues](https://github.com/masukomi/code-formatter/issues) for future enhancements.
+
+## Installation
+After cloning the repo just call
+```sh
+sudo chicken-install
+```
+In the furture it should be possible to do sudo chicken-install scheme-format which would pull,
+compile and install the formatter.
+
 
 ### Note
 This formatter is ok, but needs some love. Check out [the GitHub Issues](https://github.com/masukomi/scheme-format/issues) for some more details. The long term goal is to bring it more in line with the [scheme-style](http://community.schemewiki.org/cgi-bin/scheme.cgi?scheme-style) style guide. 
