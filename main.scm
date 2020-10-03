@@ -23,6 +23,8 @@
  ; Include everything else
  (import format)
 
+ (import list-utils)
+  
  ; Options
  (define end-options #f)
  (define inplace #f)
@@ -55,7 +57,15 @@
                  (exit 1)))
                #f))))
 
- ; Format
+; Format from stdin
+ (if (length=0? files)
+  (begin
+   (let ((xs (with-input-from-port (current-input-port) read/comments)))
+    (set! xs (tidy xs))
+    (define s (with-output-to-string (curry write/comments xs)))
+    (display s))))
+
+ ; Format from given file 
  (for file files
   (define xs (with-input-from-file file read/comments))
   (set! xs (tidy xs))
