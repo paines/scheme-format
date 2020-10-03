@@ -1,36 +1,8 @@
-(module etc
-        (any-rec?
-          cadr?
-          car?
-          collect
-          curry
-          debug
-          dec!
-          defun?
-          defvar?
-          filt
-          for
-          for*
-          frag
-          improper-list?
-          inc!
-          indent
-          length?
-          list<
-          map-rec
-          symbol<
-          trace
-          transform
-          typeof
-          value<
-          
-          )
 (import scheme)
 (import chicken.base)
 (import chicken.string)
 (import simple-loops)
 (import srfi-1)
-
 
 (define-syntax any-rec?
  (syntax-rules ()
@@ -125,23 +97,19 @@
     (set! f
           (lambda args
            (define r)
-
            ; Trace call
            (indent trace-level (current-error-port))
            (write (cons 'f args) (current-error-port))
            (newline (current-error-port))
-
            ; Call
            (inc! trace-level)
            (set! r (apply g args))
            (dec! trace-level)
-
            ; Trace result
            (indent trace-level (current-error-port))
            (display "-> " (current-error-port))
            (write r (current-error-port))
            (newline (current-error-port))
-
            ; Result
            r))))))
 
@@ -268,5 +236,3 @@
   (symbol< (typeof x) (typeof y))))
 
 (define trace-level 0)
-
-)
